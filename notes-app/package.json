@@ -9,7 +9,7 @@
   "author": "krishna",
   "license": "ISC",
   "dependencies": {
-    "esm": "^3.2.25",
+    "chalk": "^2.4.1",
     "validator": "^10.8.0"
   }
 }
