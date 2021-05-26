@@ -1,4 +1,11 @@
-const fs = require('fs');
+// Challenge 1
+// const add = require('./utils.js')
+// const sum = add(5,5);
+// console.log(sum);
 
-fs.writeFileSync('notes.txt','Hi my name is Krishna');
-fs.appendFileSync('notes.txt',' I am project engineer @ wipro')
+// Challenge 2
+const notesFunc = require('./notes');
+const validator = require('validator');
+console.log(validator.isEmail('krishna@gmail.com'));
+console.log(validator.isURL('https://www.google.com'))
+console.log(notesFunc())

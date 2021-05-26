@@ -1,0 +1,15 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "notes app with node JS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "krishna",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "validator": "^10.8.0"
+  }
+}
