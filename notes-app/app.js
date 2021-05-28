@@ -13,8 +13,21 @@ yargs.version('1.1.0')
 yargs.command({
     command : 'add',
     describe : 'Add a new note',
-    handler :  handler =() => {
-        console.log('Adding a new note !!')
+    builder : {
+        title : {
+            describe : 'Note Title',
+            demandOption : true,   //Used to check if an arguement is neccessary or not
+            type: 'string' // Type of arguement which is needed
+        },
+        body : {
+            describe : 'Note Body',
+            demandOption : true,   //Used to check if an arguement is neccessary or not
+            type: 'string' // Type of arguement which is needed
+        },
+    },
+    handler :  handler = (argv) => {
+        console.log('Title : '+ argv.title)
+        console.log('Body : '+ argv.body)
     }
 })
 // Remove command
@@ -25,7 +38,7 @@ yargs.command({
         console.log('Removing a note !!')
     }
 })
-// Read command
+// Read command to read title of note
 const read ={
     command : 'read',
     describe : 'Read the note',
@@ -43,4 +56,6 @@ const list= {
     }
 }
 yargs.command(list)
-console.log(yargs.argv)
+
+yargs.parse() // It parses the values which is being passed
+// console.log(yargs.argv)
