@@ -32,3 +32,32 @@
 //     console.log('Remove note')
 // }
 
+// CHallenge 5
+// Entering Notes title and body from Command line
+// const yargs = require('yargs')
+
+// // Customize yargs version
+// yargs.version('1.1.0')
+
+// // Command to excute add notes, remove notes, read notes, list notes
+// // Add Command
+// yargs.command({
+//     command : 'add',
+//     describe : 'Add a new note',
+//     builder : {
+//         title : {
+//             describe : 'Note Title',
+//             demandOption : true,   //Used to check if an arguement is neccessary or not
+//             type: 'string' // Type of arguement which is needed
+//         },
+//         body : {
+//             describe : 'Note Body',
+//             demandOption : true,   //Used to check if an arguement is neccessary or not
+//             type: 'string' // Type of arguement which is needed
+//         },
+//     },
+//     handler :  handler = (argv) => {
+//         console.log('Title : '+ argv.title)
+//         console.log('Body : '+ argv.body)
+//     }
+// })
