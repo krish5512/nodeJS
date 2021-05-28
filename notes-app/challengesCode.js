@@ -18,3 +18,17 @@
 // console.log(chalk.bold.blue.inverse('Success'))
 
 
+// Challenge 4
+// Take user input from cli arguement to perform add or remove in notes app
+// const getNotes = require('./notes');
+// const chalk = require('chalk');
+// const fs = require('fs');
+// console.log(getNotes())
+// const command = process.argv[2];
+// console.log(process.argv)
+// if (command === 'add') {
+//     console.log('Adding Note')
+// } else if (command === 'remove') {
+//     console.log('Remove note')
+// }
+
