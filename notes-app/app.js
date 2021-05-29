@@ -1,7 +1,5 @@
 const yargs = require('yargs')
-const fs = require('fs');
 const notes = require('./notes');
-const { string } = require('yargs');
 
 // Customize yargs version
 yargs.version('1.1.0')
@@ -31,11 +29,11 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'Remove a note',
-    builder : {
-        title : {
-            describe : 'Note title',
-            demandOption : true,
-            type : string,
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string',
         }
     },
     handler: handler = (argv) => {
@@ -43,23 +41,27 @@ yargs.command({
     }
 })
 // Read command to read title of note
-const read = {
+yargs.command({
     command: 'read',
     describe: 'Read the note',
-    handler: handler = () => {
-        console.log('Read the note')
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler: handler = (argv) => {
+        notes.readNote(argv.title)
     }
-}
-yargs.command(read)
+})
 // List Command
-const list = {
+yargs.command({
     command: 'list',
     describe: 'List all the notes',
     handler: handler = () => {
-        console.log('Listing all the notes : ');
+        notes.listNotes();
     }
-}
-yargs.command(list)
+})
 
 yargs.parse() // It parses the values which is being passed
-// console.log(yargs.argv)
