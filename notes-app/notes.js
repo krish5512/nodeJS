@@ -1,4 +1,3 @@
-// Challenge 2
 const fs = require('fs')
 const getNotes = () => {
     return "Your Notes.....";
@@ -35,9 +34,15 @@ const addNote = (title, body) => {
     } else {
         console.log('Note title already taken....')
     }
-
+}
+const removeNote = (title) => {
+    const notes = loadNotes();
+    const filteredNote = notes.filter(note => note.title !== title);
+    saveNotes(filteredNote);
+    console.log('Note removed..!!')
 }
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
+    removeNote: removeNote,
 };
