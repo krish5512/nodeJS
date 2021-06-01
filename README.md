@@ -6,4 +6,5 @@
  packages 
 
 Available apps : 
-    1.Notes App (A node app based on CLI to add/read/list/delete notes)
+    1.Notes App : (A node app based on CLI to add/read/list/delete notes)
+    2.Weathers App : A node supported app to get the weather information on realtime.

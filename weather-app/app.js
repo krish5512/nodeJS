@@ -10,3 +10,7 @@ request({
     const current = response.body.current;
     console.log(current.weather_descriptions[0] + " It is currently " + current.temperature + " degrees out, It feels like " + current.feelslike + " degrees out.")
 })
+
+// Geocoding Service
+
+// Address -> Lat/Long -> Weather
