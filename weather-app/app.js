@@ -7,8 +7,15 @@ request({
     url: weatherUrl,
     json: true
 }, (error, response) => {
-    const current = response.body.current;
-    console.log(current.weather_descriptions[0] + " It is currently " + current.temperature + " degrees out, It feels like " + current.feelslike + " degrees out.")
+    if (error) {
+        console.log('Unable to connect Weather Service')
+    } else if (response.body.error) {
+        console.log('Unable to find the location')
+    } else {
+        const current = response.body.current;
+        console.log(current.weather_descriptions[0] + " It is currently " + current.temperature + " degrees out, It feels like " + current.feelslike + " degrees out.")
+    }
+
 })
 
 // Geocoding Service
@@ -21,7 +28,18 @@ request({
 }, (
     error, resp
 ) => {
-    const latitude = resp.body.features[0].center[1];
-    const longitude = resp.body.features[0].center[0];
-    console.log('THe location is ' + latitude + " and " + longitude)
+    if (error) {
+        console.log('Unable to connect Location Service')
+    } else if (resp.body.features.length === 0) {
+        console.log('Invalid request data')
+    } else {
+        const latitude = resp.body.features[0].center[1];
+        const longitude = resp.body.features[0].center[0];
+        console.log('THe location is ' + latitude + " and " + longitude)
+    }
+
+
+
+
+
 })
