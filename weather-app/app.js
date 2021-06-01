@@ -1,10 +1,10 @@
 const request = require('request');
 
 
-const url = 'http://api.weatherstack.com/current?access_key=9c107dc6a7a681679e8429f819497b6d&query=28.643734,77.345399&units=f';
+const weatherUrl = 'http://api.weatherstack.com/current?access_key=9c107dc6a7a681679e8429f819497b6d&query=28.643734,77.345399&units=f';
 
 request({
-    url: url,
+    url: weatherUrl,
     json: true
 }, (error, response) => {
     const current = response.body.current;
@@ -14,3 +14,14 @@ request({
 // Geocoding Service
 
 // Address -> Lat/Long -> Weather
+const loactionUrl = 'http://api.mapbox.com/geocoding/v5/mapbox.places/chester.json?proximity=-74.70850,40.78375&limit=1&access_token=pk.eyJ1Ijoia3Jpc2huYTMyMSIsImEiOiJja3BkbWRqcWYwMHhjMndxcnkwZmRtMGRjIn0.cDuAik58B0F-2_ZgUiOKgQ';
+request({
+    url: loactionUrl,
+    json: true
+}, (
+    error, resp
+) => {
+    const latitude = resp.body.features[0].center[1];
+    const longitude = resp.body.features[0].center[0];
+    console.log('THe location is ' + latitude + " and " + longitude)
+})
