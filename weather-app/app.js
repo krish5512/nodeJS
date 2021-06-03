@@ -12,8 +12,8 @@ const weatherFunc = () => {
                 if (error) {
                     return console.log(error)
                 }
-
-                console.log('Weather is  : ' + wedata.temperature + ' and ' + wedata.weather_descriptions[0])
+                const {temperature : temp,weather_descriptions : desc} = wedata
+                console.log('Weather is  : ' + temp + ' and ' + desc)
             })
         });
     }
