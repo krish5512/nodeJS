@@ -8,10 +8,16 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Weather App'
+        title: 'Weather',
+        name:'KRISHNA KUMAR'
     })
 })
-
+app.get('/about',(req,res) => {
+    res.render('about',{
+        title:'About',
+        name:'Krishna KUMAR'
+    })
+})
 app.get('/weather', (req, res) => {
     res.send({
         forecast: 'Its 34 degree celcius and with scatter rain',
