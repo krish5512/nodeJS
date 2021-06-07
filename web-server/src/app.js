@@ -1,9 +1,17 @@
 const path = require('path')
 const express = require('express')
-const app = express();
-const publicDirectoryPath = path.join(__dirname, '../public');
-app.set('view engine', 'hbs');
 
+
+const app = express();
+
+// Define paths for express config
+const publicDirectoryPath = path.join(__dirname, '../public');
+const viewPath = path.join(__dirname,'../template'); 
+// Setup handlebars engine and views location
+app.set('view engine', 'hbs');
+app.set('views',viewPath);
+
+// Setup static directory to serve 
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
@@ -15,7 +23,13 @@ app.get('', (req, res) => {
 app.get('/about',(req,res) => {
     res.render('about',{
         title:'About',
-        name:'Krishna KUMAR'
+        name:'Krishna Kumar'
+    })
+})
+app.get('/help',(req,res) => {
+    res.render('help',{
+        title:'Help Page',
+        message:'You can get any help regarding this page from this section.'
     })
 })
 app.get('/weather', (req, res) => {
@@ -31,7 +45,7 @@ app.listen(3000, () => {
 
 
 
-// Express page routing Example
+// Express page routing Example Static code
 // app.get('/help', (req, res) => {
 //     res.send({
 //         name: 'Krishna',
