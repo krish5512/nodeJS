@@ -22,12 +22,12 @@ hbs.registerPartials(partials);
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: 'KRISHNA KUMAR'
+        name: 'vKrishna Kumar'
     })
 })
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About',
+        title: 'About Me',
         name: 'Krishna Kumar'
     })
 })
@@ -47,14 +47,14 @@ app.get('/weather', (req, res) => {
 app.get('/help/*', (req, res) => {
     res.render('404',{
         title : '404',
-        name: 'Krishna',
+        name: 'Krishna Kumar',
         errorMessage : 'Page not Found',
     })
 })
 app.get('*', (req, res) => {
     res.render('404',{
         title : '404',
-        name: 'Krishna',
+        name: 'Krishna Kumar',
         errorMessage : 'Page not Found',
     })});
 app.listen(3000, () => {
