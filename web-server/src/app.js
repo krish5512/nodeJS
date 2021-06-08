@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs');
+const forecast = require("./utils/forecast");
+const geoCode = require("./utils/geoCode");
 
 const app = express();
 
@@ -22,7 +24,7 @@ hbs.registerPartials(partials);
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: 'vKrishna Kumar'
+        name: 'Krishna Kumar'
     })
 })
 app.get('/about', (req, res) => {
@@ -39,24 +41,54 @@ app.get('/help', (req, res) => {
     })
 })
 app.get('/weather', (req, res) => {
-    res.send({
-        forecast: 'Its 34 degree celcius and with scatter rain',
-        location: 'vaishali'
-    })
+    if (!req.query.address) {
+        res.send({
+            error: 'You must provide Address'
+        })
+    }
+    geoCode(req.query.address, (error, {
+        latitude,
+        longitude
+    } = {}) => {
+        if (error) {
+            res.send({
+                error
+            })
+        }
+        forecast(latitude, longitude, (error, wedata = {}) => {
+            if (error) {
+                res.send({
+                    error
+                })
+            }
+            const {
+                temperature,
+                weather_descriptions: desc
+            } = wedata
+            res.send({
+                temperature,
+                desc,
+                address: req.query.address
+            })
+        })
+
+    });
+
 })
 app.get('/help/*', (req, res) => {
-    res.render('404',{
-        title : '404',
+    res.render('404', {
+        title: '404',
         name: 'Krishna Kumar',
-        errorMessage : 'Page not Found',
+        errorMessage: 'Page not Found',
     })
 })
 app.get('*', (req, res) => {
-    res.render('404',{
-        title : '404',
+    res.render('404', {
+        title: '404',
         name: 'Krishna Kumar',
-        errorMessage : 'Page not Found',
-    })});
+        errorMessage: 'Page not Found',
+    })
+});
 app.listen(3000, () => {
     console.log('Server is up on port 3000.');
 })
